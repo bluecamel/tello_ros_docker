@@ -1,0 +1,16 @@
+[submodule "tello_ros_ws/src/tello_ros"]
+	path = tello_ros_ws/src/tello_ros
+	url = https://github.com/clydemcqueen/tello_ros.git
+[submodule "tello_ros_ws/src/ros2_shared"]
+	path = tello_ros_ws/src/ros2_shared
+	url = https://github.com/ptrmu/ros2_shared.git
+[submodule "tello_ros_ws/src/fiducial_vlam"]
+	path = tello_ros_ws/src/fiducial_vlam
+	url = https://github.com/ptrmu/fiducial_vlam.git
+[submodule "tello_ros_ws/src/flock2"]
+	path = tello_ros_ws/src/flock2
+	url = https://github.com/clydemcqueen/flock2.git
+[submodule "tello_ros_ws/src/rviz"]
+	path = rviz_ws/src/rviz
+	url = git@github.com:bluecamel/rviz
+	branch = tello_ros
