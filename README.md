@@ -3,7 +3,7 @@ This project creates a docker image for running [tello_ros](https://github.com/c
 
 It includes gazebo and a [minor fork](https://github.com/bluecamel/rviz/tree/tello_ros) of [ros2/rviz](https://github.com/ros2/rviz) for simulation.
 
-# Motivation (a.k.a why Docker?)
+# Motivation (why Docker?)
 Because docker is wonderful :)
 
 Docker keeps all of the dependencies self-contained and portable.  This allows you to run any version of dependencies without corrupting your local environment.  It also makes it easy for newcomers to get things running with a couple of commands.
@@ -35,7 +35,7 @@ To run a container, simply use the run script:
 The default entrypoint is `scripts/docker/launch.sh`.  This will source the environment files and runs `ros2 launch tello_gazebo simple_launch.py`.  If everything works, a gazebo window should open with the Tello model on the ground.
 
 # Running other launch files
-You can change `scripts/docker/launch.sh` to run whatever you want.  You might also want to peak at `scripts/docker/run.sh` to see how a separate launch file could be selected from the CLI.
+You can change `scripts/docker/launch.sh` to run whatever you want.  You might also want to peek at `scripts/docker/run.sh` to see how a separate launch file could be selected from the CLI.
 
 If you change the launch file, remember that you'll need to build the image again.  This should be pretty quick, as most of the image can be built from cached layers.
 
