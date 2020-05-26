@@ -1,7 +1,7 @@
 # Tello ROS Docker
 This project creates a docker image for running [tello_ros](https://github.com/clydemcqueen/tello_ros/tree/master/tello_gazebo) by [clydemcqueen](https://github.com/clydemcqueen).  Please refer there for more details.
 
-It includes gazebo and a [minor fork](https://github.com/bluecamel/rviz) of [ros2/rviz](https://github.com/ros2/rviz) for simulation.
+It includes gazebo and a [minor fork](https://github.com/bluecamel/rviz/tree/tello_ros) of [ros2/rviz](https://github.com/ros2/rviz) for simulation.
 
 # Motivation (a.k.a why Docker?)
 Because docker is wonderful :)
@@ -51,7 +51,7 @@ This should put you in the shell, inside the `tello_ros_ws` workspace.  From her
 There are a few environment files for convenience in the `env` directory.  When you've exec'd into a container, you can use these to easily get the environment you need.
 
 # rviz fork
-A [minor fork](https://github.com/bluecamel/rviz) of [ros2/rviz](https://github.com/ros2/rviz) is included in the image.  There was an [image_transport bug](https://github.com/ros2/rviz/issues/207) that kept the rviz camera plugin from displaying the camera feed from Gazebo.
+A [minor fork](https://github.com/bluecamel/rviz/tree/tello_ros) of [ros2/rviz](https://github.com/ros2/rviz) is included in the image.  There was an [image_transport bug](https://github.com/ros2/rviz/issues/207) that kept the rviz camera plugin from displaying the camera feed from Gazebo.
 
 The fork only makes a couple of cmake changes so that other dependencies don't have to be changed in order to build it.
 
