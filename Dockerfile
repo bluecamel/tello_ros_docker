@@ -37,5 +37,5 @@ ADD env ./env
 ADD scripts/docker ./scripts
 
 # Set entrypoint.
-ENTRYPOINT ["scripts/launch.sh"]
+ENTRYPOINT ["scripts/tello_driver/teleop_launch.sh"]
 CMD []

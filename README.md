@@ -8,7 +8,7 @@ Because docker is wonderful :)
 
 Docker keeps all of the dependencies self-contained and portable.  This allows you to run any version of dependencies without corrupting your local environment.  It also makes it easy for newcomers to get things running with a couple of commands.
 
-Additionally, docker allows for running automated tests (even with Gazebo!) in the cloud.  I doubt anyone is going to production with Tello deployments, but this is good practice for doing that with "real" systems.
+Additionally, docker allows for running automated tests (even with Gazebo!) in the cloud.
 
 # Requirements
 To use gazebo, a Linux host with an NVIDIA GPU is required.  It probably wouldn't take a lot of work to make this work for other hosts, but it's not something that I'm likely to spend time on (but definitely open to a PR).
@@ -16,7 +16,7 @@ To use gazebo, a Linux host with an NVIDIA GPU is required.  It probably wouldn'
 Docker is obviously required :)
 
 # Current State
-This has currently only been tested with gazebo.  I don't yet have a Tello drone to test with, so I haven't yet setup any of the docker networking that will be needed.  This should be coming within the next week (written May 25, 2020).
+Both tello_driver and tello_gazebo work, but I haven't tested everything yet (as of May 28, 2020).  You can't currently pass any node parameters to the launch commands, but you can edit the launch files to do this.  In the future, I'd like to make a single entrypoint that can pass arguments to the various launch files.
 
 # Building the image
 To build the image, run the build script:
@@ -29,15 +29,23 @@ This creates an image with the tag `tello_ros_docker:eloquent`.
 # Running a container.
 To run a container, simply use the run script:
 ```
-./scripts/host/run.sh
+./scripts/host/tello_driver/teleop_launch.sh
 ```
 
-The default entrypoint is `scripts/docker/launch.sh`.  This will source the environment files and runs `ros2 launch tello_gazebo simple_launch.py`.  If everything works, a gazebo window should open with the Tello model on the ground.
+This sets the entrypoint to `scripts/docker/tello_driver/teleop_launch.sh`, which will source the environment files and run `ros2 launch tello_driver teleop_launch.py`.
+
+# Running tello_gazebo
+Run the script:
+```
+./scripts/host/tello_gazebo/simple_launch.sh
+```
+
+If everything works, this should open a Gazebo window on your host machine with the Tello model sitting on the ground.  You can then exec into the container and run ros2 commands to command the drone.
 
 # Running other launch files
-You can change `scripts/docker/launch.sh` to run whatever you want.  You might also want to peek at `scripts/docker/run.sh` to see how a separate launch file could be selected from the CLI.
+You can add scripts to `scripts/docker`, which you can then set as the entrypoint to the container (see `scripts/hosts/tello_driver/teleop_launch.sh` for an example).
 
-If you change the launch file, remember that you'll need to build the image again.  This should be pretty quick, as most of the image can be built from cached layers.
+If you change the launch file or add new ones, remember that you'll need to build the image again.  This should be pretty quick, as most of the image can be built from cached layers.
 
 # Exec into a running container
 You can get shell access to the container:
@@ -62,5 +70,5 @@ Make sure you have a container running and then run the rviz script:
 ```
 
 # TODO
-- Setup docker networking for working with a real Tello drone (I'll be getting one soon!).
 - Add additional entrypoint scripts for the various ROS2 launch files.
+- Make flexible entrypoint that accepts arguments for different launch files.
