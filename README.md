@@ -1,5 +1,5 @@
 # Tello ROS Docker
-This project creates a docker image for running [tello_ros](https://github.com/clydemcqueen/tello_ros/tree/master/tello_gazebo) by [clydemcqueen](https://github.com/clydemcqueen).  Please refer there for more details.
+This project creates a docker image for running [tello_ros](https://github.com/clydemcqueen/tello_ros/tree/master/tello_gazebo) by [clydemcqueen](https://github.com/clydemcqueen) and [ptrmu](https://github.com/ptrmu).  Please refer there for more details.
 
 It includes gazebo and a [minor fork](https://github.com/bluecamel/rviz/tree/tello_ros) of [ros2/rviz](https://github.com/ros2/rviz) for simulation.
 
